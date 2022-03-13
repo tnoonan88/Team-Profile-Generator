@@ -1,14 +1,15 @@
 const fs = require('fs');
 const inquirer = require('inquirer');
 
-const Employee = require('./lib/Employee.js');
 const Engineer = require('./lib/Engineer.js');
 const Intern = require('./lib/Intern.js');
 const Manager = require('./lib/Manager.js');
 
-// import generate HTML function
+const generateHtml = require('./src/generateHTML.js');
 
-const employeeArr = [];
+const managerArr = [];
+const engineerArr = [];
+const internArr = [];
 
 function userInfo() {
     inquirer.prompt([
@@ -19,7 +20,7 @@ function userInfo() {
         },
         {
             type: 'input',
-            message: 'Enter Email: ',
+            message: 'Enter Employee Email: ',
             name: 'email',
         },
         {
@@ -31,7 +32,7 @@ function userInfo() {
             type: 'list',
             message: 'Select Role: ',
             name: 'role',
-            choices: ["Manager", "Engineer", "Intern"]
+            choices: ["Manager", "Engineer", "Intern"],
         },
     ])
     .then(answers => {
@@ -41,12 +42,12 @@ function userInfo() {
                         type: 'input',
                         name: 'office',
                         message:'Enter office number:',                        
-                    }
+                    },
                 ])
                 .then(response => {
                     console.log(response.office);
-                    const ManagerTeam = new Manager (answers.name, answers.email, answers.id, answers.role, response.office)
-                    employeeArr.push(ManagerTeam);
+                    const ManagerTeam = new Manager (answers.name, answers.email, answers.id, response.office)
+                    managerArr.push(ManagerTeam);
                     addOption()
                 });
             }
@@ -62,8 +63,8 @@ function userInfo() {
 
                 .then(response => {
                     console.log(response.gitHub);
-                    const EngineerTeam = new Engineer (answers.name, answers.email, answers.id, answers.role, response.gitHub)
-                    employeeArr.push(EngineerTeam);
+                    const EngineerTeam = new Engineer (answers.name, answers.email, answers.id, response.gitHub)
+                    engineerArr.push(EngineerTeam);
                     addOption()
                 });
             
@@ -79,17 +80,11 @@ function userInfo() {
                 ])
                 .then(response => {
                     console.log(response.school);
-                    const internTeam = new Intern (answers.name,  answers.email, answers.id, answers.role, response.school)
-                    employeeArr.push(internTeam);
+                    const internTeam = new Intern (answers.name,  answers.email, answers.id, response.school)
+                    internArr.push(internTeam);
                     addOption()
                 })
             }
-
-            else {
-                const employeeTeam = new Employee (answers.name, answers.email, answers.id, answers.role);
-                employeeArr.push(employeeTeam);
-                addOption()
-            };
 
             function addOption() {
                 inquirer.prompt([
@@ -105,7 +100,8 @@ function userInfo() {
                     }
                     
                     else {
-                        // if user is done adding employees, generate HTML
+                        fs.writeFile('./dist/index.html', generateHtml(managerArr, engineerArr, internArr), (err) => 
+                        err ? console.log(err) : console.log('Success!'))
                     }
                 });
             };
