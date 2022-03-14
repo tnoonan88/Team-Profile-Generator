@@ -13,17 +13,18 @@ const generateHtml = (managerArr, engineerArr, internArr) => {
         <div class="jumbotron jumbotron-fluid text-center bg-red">
             <h1 id="header">My Team</h1>
         </div>
-        <div class="card-deck">
-          <div class="col">
-            ${generateManager(managerArr)}
+        <main class="container"
+          <div class="card-deck">
+            <div>
+              ${generateManager(managerArr)}
+            </div>
+            <div>
+              ${generateEngineer(engineerArr)}
+            </div>
+            <div>
+              ${generateIntern(internArr)}
           </div>
-          <div class="col">
-            ${generateEngineer(engineerArr)}
-          </div>
-          <div class="col">
-            ${generateIntern(internArr)}
-        </div>
-      </div>
+        </main>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
     </body>
     </html>
@@ -35,7 +36,7 @@ const generateHtml = (managerArr, engineerArr, internArr) => {
 const generateManager = (managerArr) => {
     const managerCards = managerArr.map(manager => {
         return `
-<div class="card" style="width: 18rem;">
+<div class="card col" style="width: 18rem;">
   <div class="card-body">
     <h5 class="card-title">${manager.name}</h5>
     <h6 class="card-subtitle mb-2 text-muted">${manager.getRole()}</h6>
