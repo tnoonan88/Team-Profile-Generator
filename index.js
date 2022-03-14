@@ -40,13 +40,13 @@ function userInfo() {
                 inquirer.prompt([
                     {
                         type: 'input',
-                        name: 'office',
+                        name: 'officeNum',
                         message:'Enter office number:',                        
                     },
                 ])
                 .then(response => {
                     console.log(response.officeNum);
-                    const ManagerTeam = new Manager (answers.name, answers.email, answers.id, response.officeNum)
+                    const ManagerTeam = new Manager (answers.name, answers.id, answers.email, response.officeNum);
                     managerArr.push(ManagerTeam);
                     addOption();
                 });
@@ -63,7 +63,7 @@ function userInfo() {
 
                 .then(response => {
                     console.log(response.gitHub);
-                    const EngineerTeam = new Engineer (answers.name, answers.email, answers.id, response.gitHub)
+                    const EngineerTeam = new Engineer (answers.name, answers.id, answers.email, response.gitHub);
                     engineerArr.push(EngineerTeam);
                     addOption();
                 });
@@ -80,7 +80,7 @@ function userInfo() {
                 ])
                 .then(response => {
                     console.log(response.school);
-                    const internTeam = new Intern (answers.name, answers.email, answers.id, response.school)
+                    const internTeam = new Intern (answers.name, answers.id, answers.email, response.school);
                     internArr.push(internTeam);
                     addOption();
                 });
@@ -91,17 +91,17 @@ function userInfo() {
                     {
                         type:'confirm',
                         name: 'addMore',
-                        message:'Would you like to add another Employee?'
+                        message:'Would you like to add another Employee?',
                     }
                 ])
                 .then(res => {
-                    if (res.addMore === true){
+                    if (res.addMore === true) {
                         userInfo();
                     }
                     
                     else {
                         fs.writeFile('./dist/index.html', generateHtml(managerArr, engineerArr, internArr), (err) => 
-                        err ? console.log(err) : console.log('Success!'))
+                        err ? console.log(err) : console.log('Success!'));
                     };
                 });
             };
