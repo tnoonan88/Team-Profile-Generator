@@ -45,10 +45,10 @@ function userInfo() {
                     },
                 ])
                 .then(response => {
-                    console.log(response.office);
-                    const ManagerTeam = new Manager (answers.name, answers.email, answers.id, response.office)
+                    console.log(response.officeNum);
+                    const ManagerTeam = new Manager (answers.name, answers.email, answers.id, response.officeNum)
                     managerArr.push(ManagerTeam);
-                    addOption()
+                    addOption();
                 });
             }
             
@@ -65,7 +65,7 @@ function userInfo() {
                     console.log(response.gitHub);
                     const EngineerTeam = new Engineer (answers.name, answers.email, answers.id, response.gitHub)
                     engineerArr.push(EngineerTeam);
-                    addOption()
+                    addOption();
                 });
             
             }
@@ -80,11 +80,11 @@ function userInfo() {
                 ])
                 .then(response => {
                     console.log(response.school);
-                    const internTeam = new Intern (answers.name,  answers.email, answers.id, response.school)
+                    const internTeam = new Intern (answers.name, answers.email, answers.id, response.school)
                     internArr.push(internTeam);
-                    addOption()
-                })
-            }
+                    addOption();
+                });
+            };
 
             function addOption() {
                 inquirer.prompt([
@@ -96,13 +96,13 @@ function userInfo() {
                 ])
                 .then(res => {
                     if (res.addMore === true){
-                        userInfo(employeeArr);
+                        userInfo();
                     }
                     
                     else {
                         fs.writeFile('./dist/index.html', generateHtml(managerArr, engineerArr, internArr), (err) => 
                         err ? console.log(err) : console.log('Success!'))
-                    }
+                    };
                 });
             };
         });
