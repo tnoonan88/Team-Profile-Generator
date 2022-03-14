@@ -6,24 +6,32 @@ const generateHtml = (managerArr, engineerArr, internArr) => {
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+        <link rel="stylesheet" href="./dist/style.css">
         <title>Document</title>
     </head>
     <body>
-        <div class="jumbotron jumbotron-fluid text-center bg-blue text-white">
+        <div class="jumbotron jumbotron-fluid text-center bg-red">
             <h1 id="header">My Team</h1>
         </div>
-    
-    ${generateManager(managerArr)}
-    ${generateEngineer(engineerArr)}    
-    ${generateIntern(internArr)}
-
+        <div class="card-deck">
+          <div class="col">
+            ${generateManager(managerArr)}
+          </div>
+          <div class="col">
+            ${generateEngineer(engineerArr)}
+          </div>
+          <div class="col">
+            ${generateIntern(internArr)}
+        </div>
+      </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
     </body>
     </html>
     `
 };
+    
 
-// modal generators:
+// card generators:
 const generateManager = (managerArr) => {
     const managerCards = managerArr.map(manager => {
         return `
