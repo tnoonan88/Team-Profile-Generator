@@ -16,7 +16,7 @@ const generateHtml = (managerArr, engineerArr, internArr) => {
         <div class="jumbotron text-center bg-danger text-white">
             <h1 id="header">My Team</h1>
         </div>
-          <div class="card-columns"
+          <div class="row"
               ${generateManager(managerArr)}
               ${generateEngineer(engineerArr)}
               ${generateIntern(internArr)}
