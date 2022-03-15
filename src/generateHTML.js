@@ -31,12 +31,12 @@ const generateHtml = (managerArr, engineerArr, internArr) => {
 const generateManager = (managerArr) => {
     const managerCards = managerArr.map(manager => {
         return `
-<div class="card" style="width: 18rem;">
+<div class="card">
   <div class="card-body">
     <h5 class="card-title">${manager.name}</h5>
     <h6 class="card-subtitle mb-2 text-muted">${manager.getRole()}</h6>
     <p class="card-text">ID: ${manager.id}<br> Office: ${manager.officeNum}</p>
-    <a href=""mailto:${manager.email}" class="card-link">Email: ${manager.email}</a>
+    <a href="mailto:${manager.email}" class="card-link">Email: ${manager.email}</a>
   </div>
 </div>
         `
@@ -47,12 +47,12 @@ const generateManager = (managerArr) => {
 const generateEngineer = (engineerArr) => {
     const engineerCards = engineerArr.map(engineer => {
         return `
-<div class="card" style="width: 18rem;">
+<div class="card">
   <div class="card-body">
     <h5 class="card-title">${engineer.name}</h5>
     <h6 class="card-subtitle mb-2 text-muted">${engineer.getRole()}</h6>
     <p class="card-text">ID: ${engineer.id}</p>
-    <a href="https://github.com/${engineer.gitHub}" class="card-link">GitHub: ${engineer.gitHub}</a>
+    <a href="https://github.com/${engineer.gitHub}" class="card-link">GitHub: ${engineer.gitHub}</a><br>
     <a href="mailto:${engineer.email}" class="card-link">Email: ${engineer.email}</a><br>
   </div>
 </div>
@@ -64,7 +64,7 @@ const generateEngineer = (engineerArr) => {
 const generateIntern = (internArr) => {
     const internCards = internArr.map(intern => {
         return `
-<div class="card" style="width: 18rem;">
+<div class="card">
   <div class="card-body">
     <h5 class="card-title">${intern.name}</h5>
     <h6 class="card-subtitle mb-2 text-muted">${intern.getRole()}</h6>

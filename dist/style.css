@@ -1,10 +1,10 @@
 body {
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     align-items: center !important;
 }
 
-.card-columns {
+.card-container {
     position: absolute;
     display: flex;
     flex-wrap: wrap;
