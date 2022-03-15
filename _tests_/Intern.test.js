@@ -8,6 +8,6 @@ test('does getSchool() work', () => {
 
 test('does getRole() return Intern as a string', () => {
     const testRole = 'Intern';
-    const intern = new Intern('tom', 1, 'tom@email.com', testSchool);
+    const intern = new Intern('tom', 1, 'tom@email.com', 'GSU');
     expect(intern.getRole()).toBe(testRole);
 });
