@@ -4,7 +4,7 @@ body {
     align-items: center !important;
 }
 
-.card-container {
+.row {
     position: absolute;
     display: flex;
     flex-wrap: wrap;
