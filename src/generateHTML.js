@@ -7,7 +7,7 @@ const generateHtml = (managerArr, engineerArr, internArr) => {
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
         <link rel="stylesheet" href="./dist/style.css">
-        <title>Document</title>
+        <title>My Team</title>
     </head>
     <body>
         <div class="jumbotron jumbotron-fluid text-center bg-red">
@@ -57,7 +57,7 @@ const generateEngineer = (engineerArr) => {
     <h5 class="card-title">${engineer.name}</h5>
     <h6 class="card-subtitle mb-2 text-muted">${engineer.getRole()}</h6>
     <p class="card-text">ID: ${engineer.id}</p>
-    <a href="#" class="card-link">${engineer.email}</a>
+    <a href="#" class="card-link">${engineer.email}</a><br>
     <a href="#" class="card-link">${engineer.gitHub}</a>
   </div>
 </div>
